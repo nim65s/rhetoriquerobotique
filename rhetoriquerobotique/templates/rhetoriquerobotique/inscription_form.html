@@ -2,11 +2,12 @@
 {% load bootstrap3 %}
 
 {% block content %}
+<p><strong>Inscriptions ouvertes jusqu’au 10 mai</strong></p>
 <form action="" method="post" class="form-horizontal">
   {% csrf_token %}
   {% bootstrap_form form layout="horizontal" %}
   {% buttons layout="horizontal" %}
-  <button type="submit" class="btn btn-primary">Je m’inscris !</button>
+  <button type="submit" class="btn btn-primary">Je m’inscris</button>
   {% endbuttons %}
 </form>
 {% endblock %}

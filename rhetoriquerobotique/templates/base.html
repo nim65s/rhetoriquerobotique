@@ -44,13 +44,26 @@
     <div class="container">
       <h1>Rhétorique et Robotique</h1>
       <h3>ULB, 19 mai 2017</h3>
-      <h2>{% if 'inscription'  not in request.path %}<a href="{% url 'inscription'  %}">{% endif %}Inscription            {% if 'inscription'  not in request.path %}</a>{% endif %}</h2>
-      <h2>{% if 'presentation' not in request.path %}<a href="{% url 'presentation' %}">{% endif %}Présentation           {% if 'presentation' not in request.path %}</a>{% endif %}</h2>
-      <h2>{% if 'programme'    not in request.path %}<a href="{% url 'programme'    %}">{% endif %}Programme de la journée{% if 'programme'    not in request.path %}</a>{% endif %}</h2>
       {% bootstrap_messages %}
+
+      {% if 'inscription' in request.path %}
+      <h2><a href="{% url 'presentation'  %}">Présentation</a></h2>
+      <h2><a href="{% url 'programme'    %}">Programme de la journée</a></h2>
+      <h2>Inscription</h2>
+      {% elif 'presentation' in request.path %}
+      <h2><a href="{% url 'inscription'  %}">Inscription</a></h2>
+      <h2><a href="{% url 'programme'    %}">Programme de la journée</a></h2>
+      <h2>Présentation</h2>
+      {% elif 'programme'   in request.path %}
+      <h2><a href="{% url 'inscription'  %}">Inscription</a></h2>
+      <h2><a href="{% url 'presentation' %}">Présentation           </a></h2>
+      <h2>Programme de la journée</h2>
+      {% endif %}
+
       {% block content %}{% endblock %}
     </div>
 
+    <p class="text-center"><strong>contact: edanblon@ulb.ac.be</strong></p>
     <hr>
     <div class="container">
       <div class="logos">
@@ -63,7 +76,6 @@
       </div>
     </div>
     <hr>
-    <p class="text-center">contact: edanblon@ulb.ac.be, jpl@laas.fr</p>
 
     <script src="{% bootstrap_jquery_url %}"></script>
     <script src="{% bootstrap_javascript_url %}" crossorigin="anonymous" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" ></script>
