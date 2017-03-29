@@ -18,7 +18,7 @@
     </style>
   </head>
   <body>
-    <nav class="navbar">
+    <nav class="navbar navbar-default">
       <div class="container">
 
         <div class="navbar-header">
@@ -32,9 +32,9 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{% url 'inscription' %}">Inscription</a></li>
-            <li><a href="{% url 'description' %}">Description</a></li>
-            <li><a href="{% url 'programme' %}">Programme</a></li>
+            <li{% if 'inscription'  in request.path %} class="active"{% endif %}><a href="{% url 'inscription'  %}">Inscription</a></li>
+            <li{% if 'presentation' in request.path %} class="active"{% endif %}><a href="{% url 'presentation' %}">Présentation</a></li>
+            <li{% if 'programme'    in request.path %} class="active"{% endif %}><a href="{% url 'programme'    %}">Programme</a></li>
           </ul>
         </div>
 
@@ -43,10 +43,10 @@
 
     <div class="container">
       <h1>Rhétorique et Robotique</h1>
-      <p>ULB, 19 mai 2017</p>
-      <h2><a href="{% url 'inscription' %}">Inscription</a></h2>
-      <h2><a href="{% url 'description' %}">Présentation</a></h2>
-      <h2><a href="{% url 'programme' %}">Programme de la journée</a></h2>
+      <h3>ULB, 19 mai 2017</h3>
+      <h2>{% if 'inscription'  not in request.path %}<a href="{% url 'inscription'  %}">{% endif %}Inscription            {% if 'inscription'  not in request.path %}</a>{% endif %}</h2>
+      <h2>{% if 'presentation' not in request.path %}<a href="{% url 'presentation' %}">{% endif %}Présentation           {% if 'presentation' not in request.path %}</a>{% endif %}</h2>
+      <h2>{% if 'programme'    not in request.path %}<a href="{% url 'programme'    %}">{% endif %}Programme de la journée{% if 'programme'    not in request.path %}</a>{% endif %}</h2>
       {% bootstrap_messages %}
       {% block content %}{% endblock %}
     </div>
