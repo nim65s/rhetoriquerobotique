@@ -2,7 +2,7 @@
 {% load bootstrap3 %}
 
 {% block content %}
-<h1>Inscription</h1>
+<h2>Inscription</h2>
 <form action="" method="post" class="form-horizontal">
   {% csrf_token %}
   {% bootstrap_form form layout="horizontal" %}
@@ -10,5 +10,10 @@
   <button type="submit" class="btn btn-primary">Je m’inscris !</button>
   {% endbuttons %}
 </form>
+{% endblock %}
+
+{% block scripts %}
+$("label[for='id_buffet']:first").html("Inscription au buffet");
+$("label[for='id_buffet']:last").html('<input class="" id="id_buffet" name="buffet" type="checkbox" />');
 {% endblock %}
 
