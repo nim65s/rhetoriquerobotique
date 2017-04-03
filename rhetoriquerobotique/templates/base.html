@@ -12,6 +12,13 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
+.heph {
+    background-image: url("{% static 'hephaestus.png' %}"); 
+    background-color: rgba(255,255,255,0.5);
+    background-repeat: no-repeat;
+    background-position: 100% 0 ;
+    background-blend-mode: lighten;
+}
 .logos { text-align: justify; }
 .logos img { height: 50px; display: inline-block;}
 .logos:after{content:""; display: inline-block; width: 100%; height: 0;}
@@ -41,11 +48,12 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container heph">
       <h1>Rhétorique et Robotique</h1>
       <h3>ULB, Bruxelles, 19 mai 2017</h3>
       <p>Campus du Solbosch, Bâtiment A, Salle AY2.114</p>
       {% bootstrap_messages %}
+      <h4>Journée d’étude organisée par Emmanuelle Danblon (GRAAL-ULB) et Jean-Paul Laumond (LAAS-CNRS) </h4>
 
       {% if 'inscription' in request.path %}
       <h2><a href="{% url 'presentation'  %}">Présentation</a></h2>
