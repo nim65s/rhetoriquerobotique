@@ -10,5 +10,8 @@ class Inscription(models.Model):
     email = models.EmailField()
     buffet = models.BooleanField()
 
+    def __str__(self):
+        return f'{self.prenom} {self.nom} - {self.fonction} ({self.institution})'
+
     def get_absolute_url(self):
         return reverse('inscription')
