@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+<table class="table">
+  <tr><th>Nom</th><th>Prénom</th><th>Institution</th><th>Fonction</th><th>email</th><th>Buffet</th></tr>
+  {% for inscription in inscription_list %}
+  <tr>
+    <td>{{ inscription.nom }}</td><td>{{ inscription.prenom }}</td><td>{{ inscription.institution }}</td>
+    <td>{{ inscription.fonction }}</td><td>{{ inscription.email }}</td><td>{{ inscription.buffet|yesno }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

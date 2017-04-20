@@ -1,8 +1,9 @@
 from django.conf.urls import url
 from django.contrib import admin
 
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import TemplateView, RedirectView, ListView
 
+from .models import Inscription
 from .views import InscriptionView
 
 urlpatterns = [
@@ -11,4 +12,5 @@ urlpatterns = [
     url(r'^inscription$', InscriptionView.as_view(), name='inscription'),
     url(r'^presentation', TemplateView.as_view(template_name='presentation.html'), name='presentation'),
     url(r'^programme', TemplateView.as_view(template_name='programme.html'), name='programme'),
+    url(r'^liste', ListView.as_view(model=Inscription), name='liste')
 ]
