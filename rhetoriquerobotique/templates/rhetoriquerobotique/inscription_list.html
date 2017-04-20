@@ -2,6 +2,9 @@
 {% load bootstrap3 %}
 
 {% block content %}
+
+Total: {{ inscriptions }} inscrits, dont {{ buffets }} buffets.
+
 <table class="table">
   <tr><th>Nom</th><th>Prénom</th><th>Institution</th><th>Fonction</th><th>email</th><th>Buffet</th></tr>
   {% for inscription in inscription_list %}
