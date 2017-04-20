@@ -15,9 +15,9 @@ from pathlib import Path
 
 PROJECT = "rhetoriquerobotique"
 PROJECT_VERBOSE = "Rhétorique Robotique"
-MAIL_USER = "majo"
-ALLOWED_HOSTS = ["rhetoriquerobotique.eu"]
-ALLOWED_HOSTS.append("www." + ALLOWED_HOSTS[0])
+MAIL_USER = "noreply"
+HOST = "rhetoriquerobotique.eu"
+ALLOWED_HOSTS = [HOST, f"www.{HOST}"]
 
 BASE_DIR = dirname(dirname(abspath(__file__)))
 
@@ -35,9 +35,9 @@ EMAIL_SUBJECT_PREFIX = ("[%s Dev] " if DEBUG else "[%s] ") % PROJECT_VERBOSE
 EMAIL_USE_SSL = True
 EMAIL_HOST = "mail.gandi.net"
 EMAIL_PORT = 465
-EMAIL_HOST_USER = f"{MAIL_USER}@totheweb.fr"
-SERVER_EMAIL = f"{MAIL_USER}+{PROJECT}@totheweb.fr"
-DEFAULT_FROM_EMAIL = f"{PROJECT_VERBOSE} <{MAIL_USER}@totheweb.fr>"
+EMAIL_HOST_USER = f"{MAIL_USER}@{HOST}"
+SERVER_EMAIL = f"{MAIL_USER}+{PROJECT}@{HOST}"
+DEFAULT_FROM_EMAIL = f"{PROJECT_VERBOSE} <{MAIL_USER}@{HOST}>"
 EMAIL_HOST_PASSWORD = (CONF_DIR / "email_password").open().read().strip()
 EMAIL_BACKEND = 'django.core.mail.backends.%s' % ('locmem.EmailBackend' if DEBUG else 'smtp.EmailBackend')
 
