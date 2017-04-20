@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 from django.views.generic import TemplateView, RedirectView, ListView
@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^presentation', TemplateView.as_view(template_name='presentation.html'), name='presentation'),
     url(r'^programme', TemplateView.as_view(template_name='programme.html'), name='programme'),
     url(r'^liste', InscriptionListView.as_view(), name='liste'),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]

@@ -1,5 +1,6 @@
 from django.views.generic import CreateView, ListView
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Inscription
 
@@ -13,7 +14,7 @@ class InscriptionCreateView(CreateView):
         return super().form_valid(form)
 
 
-class InscriptionListView(ListView):
+class InscriptionListView(LoginRequiredMixin, ListView):
     model = Inscription
 
     def get_context_data(self, **kwargs):
