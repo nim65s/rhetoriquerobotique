@@ -14,4 +14,10 @@ DEBUG=True" >> .env
 
 ## Integration / Prod
 
-Setup [proxyta.net](http://proxyta.net), and `docker-compose up -d`
+Setup [proxyta.net](http://proxyta.net), and
+
+```
+echo DOMAIN_NAME=eu >> .env
+echo DSN=...... >> .env
+docker-compose up -d
+```
