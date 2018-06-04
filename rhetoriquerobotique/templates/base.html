@@ -13,7 +13,7 @@
     <![endif]-->
     <style>
 .heph {
-    background-image: url("{% static 'hephaestus.png' %}"); 
+    background-image: url("{% static 'hephaestus.png' %}");
     background-color: rgba(255,255,255,0.5);
     background-repeat: no-repeat;
     background-position: 100% 0 ;
@@ -50,10 +50,10 @@
 
     <div class="container heph">
       <h1>Rhétorique et Robotique</h1>
-      <h3>ULB, Bruxelles, 19 mai 2017</h3>
-      <p>Campus du Solbosch, Bâtiment A, Salle AY2.114</p>
+      <h3>Séminaire commun GRAL (ULB) - LAAS-CNRS</h3>
+      <p>15 juin 2018, Salle Tourmalet, 11h00-16h30, LAAS-CNRS, Toulouse</p>
       {% bootstrap_messages %}
-      <h4>Journée d’étude organisée par Emmanuelle Danblon (GRAL-ULB) et Jean-Paul Laumond (LAAS-CNRS) </h4>
+      <h4>Parler de robotique. Exercices de rhétorique adaptés à un enjeu citoyen. </h4>
 
       {% if 'inscription' in request.path %}
       <h2><a href="{% url 'presentation'  %}">Présentation</a></h2>
@@ -72,7 +72,7 @@
       {% block content %}{% endblock %}
     </div>
 
-    <p class="text-center"><strong>contact: edanblon@ulb.ac.be</strong></p>
+    <!--<p class="text-center"><strong>contact: edanblon@ulb.ac.be</strong></p>-->
     <hr>
     <div class="container">
       <div class="logos">
