@@ -1,0 +1,49 @@
+version: '3'
+
+volumes:
+  srv:
+  sql:
+
+services:
+  postgres:
+    image: postgres:10-alpine
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - "sql:/var/lib/postgresql/data"
+  memcached:
+    image: memcached:alpine
+    restart: unless-stopped
+  app:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - "srv:/srv"
+    env_file:
+      - .env
+    environment:
+      - DB=postgres
+      - MEMCACHED=True
+      - RAVEN=True
+    networks:
+      - proxytanet
+      - default
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host: rhetoriquerobotique.${DOMAIN_NAME:-local}, www.rhetoriquerobotique.${DOMAIN_NAME:-local}"
+      traefik.docker.network: "proxytanet"
+  nginx:
+    image: nim65s/ndh:nginx
+    restart: unless-stopped
+    volumes:
+      - "srv:/srv"
+    networks:
+      - proxytanet
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host: rhetoriquerobotique.${DOMAIN_NAME:-local}, www.rhetoriquerobotique.${DOMAIN_NAME:-local}; PathPrefix: /static, /media"
+
+networks:
+  proxytanet:
+    external: true

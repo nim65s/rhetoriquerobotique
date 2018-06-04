@@ -1,0 +1,18 @@
+[[source]]
+verify_ssl = true
+name = "pypi"
+url = "https://pypi.org/simple"
+
+[requires]
+python_version = "3.6"
+
+[packages]
+ndh = "<3"
+django = "<2.1"
+
+[dev-packages]
+ipython = "*"
+pygments-zenburn = "*"
+
+[pipenv]
+allow_prereleases = true

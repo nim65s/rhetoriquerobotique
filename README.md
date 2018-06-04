@@ -1,18 +1,17 @@
 # rhetoriquerobotique
 
-```
-vf new -p python3.6 rhetoriquerobotique
-vf connect
-pip install -U -r requirements.txt
-```
+## Dev
 
 ```
-sudo mkdir -p /etc/django/rhetoriquerobotique
-echo pipo > /etc/django/rhetoriquerobotique/secret_key.txt
-echo pipo > /etc/django/rhetoriquerobotique/email_password
-```
-
-```
+echo "
+SECRET_KEY=$(openssl rand -base64 32)
+POSTGRES_PASSWORD=$(openssl rand -base64 32)
+EMAIL_HOST_PASSWORD=........
+DEBUG=True" >> .env
 ./manage.py migrate
 ./manage.py runserver
 ```
+
+## Integration / Prod
+
+Setup [proxyta.net](http://proxyta.net), and `docker-compose up -d`
