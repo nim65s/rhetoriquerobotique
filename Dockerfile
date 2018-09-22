@@ -1,11 +1,9 @@
-FROM python:alpine3.7
+FROM alpine:3.8
 
 EXPOSE 8000
 
 RUN mkdir /app
 WORKDIR /app
-
-ADD Pipfile Pipfile.lock ./
 
 RUN apk update -q && apk add -q --no-cache \
     py3-psycopg2 \
@@ -15,10 +13,10 @@ RUN apk update -q && apk add -q --no-cache \
     pipenv \
     python-memcached \
     raven \
-    requests \
- && pipenv install --system --deploy --pre
+    requests
 
-ENV PYTHONPATH=/usr/lib/python3.6/site-packages
+ADD Pipfile Pipfile.lock ./
+RUN pipenv install --system --deploy
 
 ADD . .
 

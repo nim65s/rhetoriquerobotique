@@ -1,9 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os
 import sys
 
+from ndh.utils import get_env
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "rhetoriquerobotique.settings")
+    get_env()
     try:
         from django.core.management import execute_from_command_line
     except ImportError:

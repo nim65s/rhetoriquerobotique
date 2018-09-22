@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% load bootstrap3 %}
+{% load bootstrap4 %}
 
 {% block content %}
 <!--<p><strong>Date limite d’inscription: 10 mai</strong></p>-->
-<form action="" method="post" class="form-horizontal">
+<form action="" method="post" class="form-horizontal" role="form">
   {% csrf_token %}
   {% bootstrap_form form layout="horizontal" %}
   {% buttons layout="horizontal" %}
@@ -14,6 +14,5 @@
 
 {% block scripts %}
 $("label[for='id_buffet']:first").html("Inscription au buffet");
-$("label[for='id_buffet']:last").html('<input class="" id="id_buffet" name="buffet" type="checkbox" />');
+$("label[for='id_buffet']:last").html("");
 {% endblock %}
-

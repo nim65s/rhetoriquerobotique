@@ -4,11 +4,11 @@ name = "pypi"
 url = "https://pypi.org/simple"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
 
 [packages]
-ndh = "<3"
-django = "<2.1"
+ndh = "*"
+django = "<2.2"
 
 [dev-packages]
 ipython = "*"
